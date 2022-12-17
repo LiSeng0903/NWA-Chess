@@ -1,6 +1,12 @@
+import { DEBUG_MODE } from "./constants.js"
+
 class Game {
     constructor() {
         this.board = []
+        this.init_board()
+    }
+
+    init_board() {
         for ( let i = 0; i < 8; i++ ) {
             this.board.push( [] )
             for ( let j = 0; j < 8; j++ ) {
@@ -36,6 +42,10 @@ class Game {
         for ( let y = 0; y < 8; y++ ) {
             this.board[6][y].type = 'pawn'
         }
+
+        // if ( DEBUG_MODE ) {
+        //     this.board[5][5].type = 'king'
+        // }
     }
 
     draw_board() {
@@ -52,7 +62,7 @@ class Game {
                     process.stdout.write( '  ' )
                 }
                 else {
-                    process.stdout.write( board[x][y].type[0] + ' ' )
+                    process.stdout.write( board[x][y].ava + ' ' )
                 }
             }
             process.stdout.write( '|' )
@@ -65,11 +75,49 @@ class Game {
     }
 
     move( from, to ) {
-
+        this.clean_ava()
     }
 
-    preview_ava( preview_pos ) {
+    preview_ava( previewPos ) {
+        this.clean_ava()
 
+        let [x, y] = previewPos
+        let pieceType = this.board[x][y].type
+
+        let avaList = []
+        if ( pieceType == 'king' ) {
+            avaList = this.king_preview( x, y )
+        }
+        for ( let i = 0; i < avaList.length; i++ ) {
+            let [x, y] = avaList[i]
+            this.board[x][y].ava = true
+        }
+    }
+
+    is_in_range( examPos ) {
+        let [x, y] = examPos
+        return ( x >= 0 && x <= 7 && y >= 0 && y <= 7 )
+    }
+
+    king_preview( oriX, oriY ) {
+        let clr = this.board[oriX][oriY].color
+        let avaList = []
+        for ( let x = oriX - 1; x <= oriX + 1; x++ ) {
+            for ( let y = oriY - 1; y <= oriY + 1; y++ ) {
+                if ( this.is_in_range( [x, y] ) && this.board[x][y].color != clr ) {
+                    avaList.push( [x, y] )
+                }
+            }
+        }
+        return avaList
+    }
+
+    clean_ava() {
+        for ( let x = 0; x < 8; x++ ) {
+            for ( let y = 0; y < 8; y++ ) {
+                this.board[x][y].ava = false
+            }
+        }
     }
 }
 
