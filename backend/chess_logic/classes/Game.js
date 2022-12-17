@@ -1,57 +1,41 @@
-import { Pawn, Bishop, Rook, Knight, King, Queen } from './Pieces.js'
-
 class Game {
     constructor() {
-        this.pieces = []
-
-        // black
-        this.pieces.push( new Rook( 0, 0, 'b' ) )
-        this.pieces.push( new Knight( 0, 1, 'b' ) )
-        this.pieces.push( new Bishop( 0, 2, 'b' ) )
-        this.pieces.push( new Queen( 0, 3, 'b' ) )
-        this.pieces.push( new King( 0, 4, 'b' ) )
-        this.pieces.push( new Bishop( 0, 5, 'b' ) )
-        this.pieces.push( new Knight( 0, 6, 'b' ) )
-        this.pieces.push( new Rook( 0, 7, 'b' ) )
-        for ( let y = 0; y < 8; y++ ) {
-            this.pieces.push( new Pawn( 1, y, 'b' ) )
-        }
-
-        // white 
-        this.pieces.push( new Rook( 7, 0, 'w' ) )
-        this.pieces.push( new Knight( 7, 1, 'w' ) )
-        this.pieces.push( new Bishop( 7, 2, 'w' ) )
-        this.pieces.push( new Queen( 7, 3, 'w' ) )
-        this.pieces.push( new King( 7, 4, 'w' ) )
-        this.pieces.push( new Bishop( 7, 5, 'w' ) )
-        this.pieces.push( new Knight( 7, 6, 'w' ) )
-        this.pieces.push( new Rook( 7, 7, 'w' ) )
-        for ( let y = 0; y < 8; y++ ) {
-            this.pieces.push( new Pawn( 6, y, 'w' ) )
-        }
-    }
-
-    get_board_API() {
-        // create empty board 
-        let board = []
+        this.board = []
         for ( let i = 0; i < 8; i++ ) {
-            board.push( [] )
+            this.board.push( [] )
             for ( let j = 0; j < 8; j++ ) {
-                board[i].push( {
-                    type: '',
-                    color: '',
+                this.board[i].push( {
+                    type: 'nothing',
+                    color: ( i == 0 || i == 1 ) ? 'b' : ( ( i == 6 || i == 7 ) ? 'w' : '' ),
                     ava: false
-                } )
+                }
+                )
             }
         }
 
-        // fill pieces 
-        for ( let piece of this.pieces ) {
-            let [x, y] = piece.location
-            board[x][y].type = piece.type
-            board[x][y].color = piece.color
+        this.board[0][0].type = 'rook'
+        this.board[0][1].type = 'knight'
+        this.board[0][2].type = 'bishop'
+        this.board[0][3].type = 'queen'
+        this.board[0][4].type = 'king'
+        this.board[0][5].type = 'bishop'
+        this.board[0][6].type = 'knight'
+        this.board[0][7].type = 'rook'
+        for ( let y = 0; y < 8; y++ ) {
+            this.board[1][y].type = 'pawn'
         }
-        return board
+
+        this.board[7][0].type = 'rook'
+        this.board[7][1].type = 'knight'
+        this.board[7][2].type = 'bishop'
+        this.board[7][3].type = 'queen'
+        this.board[7][4].type = 'king'
+        this.board[7][5].type = 'bishop'
+        this.board[7][6].type = 'knight'
+        this.board[7][7].type = 'rook'
+        for ( let y = 0; y < 8; y++ ) {
+            this.board[6][y].type = 'pawn'
+        }
     }
 
     draw_board() {
@@ -60,7 +44,7 @@ class Game {
         }
         process.stdout.write( '\n' )
 
-        let board = this.get_board_API()
+        let board = this.board
         for ( let x = 0; x < 8; x++ ) {
             process.stdout.write( '| ' )
             for ( let y = 0; y < 8; y++ ) {
@@ -78,6 +62,14 @@ class Game {
         for ( let i = 0; i < 19; i++ ) {
             process.stdout.write( '-' )
         }
+    }
+
+    move( from, to ) {
+
+    }
+
+    preview_ava( preview_pos ) {
+
     }
 }
 
