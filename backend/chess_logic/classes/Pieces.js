@@ -47,3 +47,5 @@ class Queen extends Piece {
         this.type = 'queen'
     }
 }
+
+export { Pawn, Bishop, Rook, Knight, King, Queen }
