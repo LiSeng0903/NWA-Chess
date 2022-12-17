@@ -43,9 +43,10 @@ class Game {
             this.board[6][y].type = 'pawn'
         }
 
-        // if ( DEBUG_MODE ) {
-        //     this.board[5][5].type = 'king'
-        // }
+        if ( DEBUG_MODE ) {
+            this.board[4][4].type = 'king'
+            this.board[4][4].color = 'b'
+        }
     }
 
     draw_board() {
@@ -58,12 +59,7 @@ class Game {
         for ( let x = 0; x < 8; x++ ) {
             process.stdout.write( '| ' )
             for ( let y = 0; y < 8; y++ ) {
-                if ( board[x][y].color == '' ) {
-                    process.stdout.write( '  ' )
-                }
-                else {
-                    process.stdout.write( board[x][y].ava + ' ' )
-                }
+                process.stdout.write( String( board[x][y].ava )[0] + ' ' )
             }
             process.stdout.write( '|' )
             process.stdout.write( '\n' )
