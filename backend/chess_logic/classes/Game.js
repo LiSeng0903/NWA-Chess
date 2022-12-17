@@ -55,7 +55,29 @@ class Game {
     }
 
     draw_board() {
+        for ( let i = 0; i < 19; i++ ) {
+            process.stdout.write( '-' )
+        }
+        process.stdout.write( '\n' )
+
         let board = this.get_board_API()
+        for ( let x = 0; x < 8; x++ ) {
+            process.stdout.write( '| ' )
+            for ( let y = 0; y < 8; y++ ) {
+                if ( board[x][y].color == '' ) {
+                    process.stdout.write( '  ' )
+                }
+                else {
+                    process.stdout.write( board[x][y].type[0] + ' ' )
+                }
+            }
+            process.stdout.write( '|' )
+            process.stdout.write( '\n' )
+        }
+
+        for ( let i = 0; i < 19; i++ ) {
+            process.stdout.write( '-' )
+        }
     }
 }
 
