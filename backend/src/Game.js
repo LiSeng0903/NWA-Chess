@@ -44,8 +44,8 @@ class Game {
         }
 
         if ( DEBUG_MODE ) {
-            this.board[4][4].type = 'king'
-            this.board[4][4].color = 'b'
+            this.board[4][4].type = 'knight'
+            this.board[4][4].color = 'w'
         }
     }
 
@@ -59,7 +59,7 @@ class Game {
         for ( let x = 0; x < 8; x++ ) {
             process.stdout.write( '| ' )
             for ( let y = 0; y < 8; y++ ) {
-                process.stdout.write( String( board[x][y].ava )[0] + ' ' )
+                process.stdout.write( String( board[x][y].ava )[2] + ' ' )
             }
             process.stdout.write( '|' )
             process.stdout.write( '\n' )
@@ -84,6 +84,10 @@ class Game {
         if ( pieceType == 'king' ) {
             avaList = this.king_preview( x, y )
         }
+        else if ( pieceType == 'knight' ) {
+            avaList = this.knight_preview( x, y )
+        }
+
         for ( let i = 0; i < avaList.length; i++ ) {
             let [x, y] = avaList[i]
             this.board[x][y].ava = true
@@ -95,6 +99,7 @@ class Game {
         return ( x >= 0 && x <= 7 && y >= 0 && y <= 7 )
     }
 
+    // preview functions 
     king_preview( oriX, oriY ) {
         let clr = this.board[oriX][oriY].color
         let avaList = []
@@ -106,6 +111,39 @@ class Game {
             }
         }
         return avaList
+    }
+
+    queen_preview( oriX, oriY ) {
+
+    }
+
+    bishop_preview( oriX, oriY ) {
+
+    }
+
+    knight_preview( oriX, oriY ) {
+        let clr = this.board[oriX][oriY].color
+        let avaList = []
+
+        avaList.push( [oriX - 1, oriY - 2] )
+        avaList.push( [oriX - 2, oriY - 1] )
+        avaList.push( [oriX - 2, oriY + 1] )
+        avaList.push( [oriX - 1, oriY + 2] )
+        avaList.push( [oriX + 1, oriY - 2] )
+        avaList.push( [oriX + 2, oriY - 1] )
+        avaList.push( [oriX + 2, oriY + 1] )
+        avaList.push( [oriX + 1, oriY + 2] )
+
+        avaList = avaList.filter( ( avaPos ) => { return this.is_in_range( avaPos ) } )
+        return avaList
+    }
+
+    rook_preview( oriX, oriY ) {
+
+    }
+
+    pawn_preview( oriX, oriY ) {
+
     }
 
     clean_ava() {
