@@ -1,9 +1,6 @@
-import { Pawn } from "./Pawn.js"
-
 class Game {
     constructor() {
         this.board = this.get_empty_board()
-        this.pa = new Pawn()
     }
 
     get_empty_board = () => {

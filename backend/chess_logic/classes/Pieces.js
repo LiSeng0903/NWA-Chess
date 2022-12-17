@@ -6,4 +6,10 @@ class Piece {
     }
 }
 
-export { Piece }
+class Pawn extends Piece {
+    constructor( x, y, clr ) {
+        super( x, y, clr )
+
+        this.type = 'pawn'
+    }
+}
