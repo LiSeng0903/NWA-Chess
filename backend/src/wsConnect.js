@@ -18,32 +18,30 @@ export default {
             const [task, payload] = JSON.parse( data )
             switch ( task ) {
                 case "init": {
-                    console.log( 'init' )
                     const newBoard = game.board
-                    const turn = game.turn;
-                    let player2 = '';
-                    if(game.playerCnt === 2){
+                    const turn = game.turn
+                    let player2 = ''
+                    if ( game.playerCnt === 2 ) {
                         player2 = 'b'
-                    }else{
+                    } else {
                         player2 = 'w'
-                        game.playerCnt++;
+                        game.playerCnt++
                     }
-                    console.log(game.playerCnt)
-                    sendData(["init", { newBoard, turn, player2 }], ws)
+                    sendData( ["init", { newBoard, turn, player2 }], ws )
                     break
                 }
                 case "preview": {
                     const location = payload
                     const newBoard = game.preview( [location[0], location[1]] )
-                    const turn = game.turn;
-                    boardcastMessage( wss, ["do", {newBoard, turn}] )
+                    const turn = game.turn
+                    boardcastMessage( wss, ["do", { newBoard, turn }] )
                     break
                 }
                 case "move": {
                     const { from, to } = payload
                     const newBoard = game.move( from, to )
-                    const turn = game.turn;
-                    boardcastMessage( wss, ["do", {newBoard, turn}] )
+                    const turn = game.turn
+                    boardcastMessage( wss, ["do", { newBoard, turn }] )
                     break
                 }
             }
