@@ -224,13 +224,18 @@ class Game {
             }
 
             // eat 
-            if ( board[oriX + 1][oriY + 1].color == 'w' ) {
-                avaList.push( [oriX + 1, oriY + 1] )
+            if ( Game.is_in_range( [oriX + 1, oriY + 1] ) ) {
+                if ( board[oriX + 1][oriY + 1].color == 'w' ) {
+                    avaList.push( [oriX + 1, oriY + 1] )
+                }
             }
-            if ( board[oriX + 1][oriY - 1] == 'w' ) {
-                avaList.push( [oriX + 1, oriY - 1] )
+            if ( Game.is_in_range( [oriX + 1, oriY - 1] ) ) {
+                if ( board[oriX + 1][oriY - 1] == 'w' ) {
+                    avaList.push( [oriX + 1, oriY - 1] )
+                }
             }
         }
+
 
         else if ( clr == 'w' ) {
             if ( oriX == 0 ) {
@@ -249,11 +254,15 @@ class Game {
             }
 
             // eat 
-            if ( board[oriX - 1][oriY + 1].color == 'b' ) {
-                avaList.push( [oriX - 1, oriY + 1] )
+            if ( Game.is_in_range( [oriX - 1, oriY + 1] ) ) {
+                if ( board[oriX - 1][oriY + 1].color == 'b' ) {
+                    avaList.push( [oriX - 1, oriY + 1] )
+                }
             }
-            if ( board[oriX - 1][oriY - 1] == 'b' ) {
-                avaList.push( [oriX - 1, oriY - 1] )
+            if ( Game.is_in_range( [oriX - 1, oriY - 1] ) ) {
+                if ( board[oriX - 1][oriY - 1] == 'b' ) {
+                    avaList.push( [oriX - 1, oriY - 1] )
+                }
             }
         }
         return avaList
