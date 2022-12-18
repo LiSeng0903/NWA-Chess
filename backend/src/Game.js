@@ -245,7 +245,8 @@ class Game {
             if ( oriX == 6 ) {
                 forward += 1
             }
-            for ( let x = oriX - 1; x <= oriX - forward; x-- ) {
+            for ( let x = oriX - 1; x >= oriX - forward; x-- ) {
+                console.log( `x is ${x}`)
                 if ( board[x][oriY].type != 'nothing' ) {
                     break
                 }
@@ -381,6 +382,7 @@ class Game {
         let pieceType = this.board[x][y].type
 
         let avaList = Game.previewFunctions[pieceType]( x, y, this.board )
+        console.log( avaList )
         for ( let i = 0; i < avaList.length; i++ ) {
             let [x, y] = avaList[i]
             this.board[x][y].ava = true

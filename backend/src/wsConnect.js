@@ -24,10 +24,12 @@ export default {
                 case "preview" : {
                     const location = payload;
                     const response = game.preview([location[0], location[1]]);
-                    console.log(game)
+                    // console.log(game)
                     boardcastMessage(wss, response);
+                    break;
                 }
-                break;
+
+                // case ""
             }
         }))
     }
