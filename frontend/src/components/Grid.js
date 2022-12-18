@@ -3,7 +3,15 @@ import styled from 'styled-components'
 const GridWrapper = styled.div`
     height: 100px;
     width: 100px;
-    background-color: ${( { x, y } ) => { return ( ( x + y ) % 2 == 0 ? '#b48585' : '#a21717' ) }};
+    background-color: ${( { x, y, ava } ) => {
+        if ( ava ) {
+            return ( ( x + y ) % 2 == 0 ? '#8a6363' : '#500b0b' )
+        }
+        else {
+            return ( ( x + y ) % 2 == 0 ? '#b48585' : '#a21717' )
+        }
+    }
+    };
     display: flex;
     justify-content: center; 
     align-items: center;
