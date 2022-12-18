@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
-// const clientWS = new WebSocket( 'ws://localhost:4000' )
-// const sendData = async ( data ) => {
-//     await clientWS.send( JSON.stringify( data ) )
-// }
+const clientWS = new WebSocket( 'ws://localhost:4000' )
+const sendData = async ( data ) => {
+    await clientWS.send( JSON.stringify( data ) )
+}
 
 const ChessContext = createContext(
     {
