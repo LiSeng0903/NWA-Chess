@@ -230,7 +230,7 @@ class Game {
                 }
             }
             if ( Game.is_in_range( [oriX + 1, oriY - 1] ) ) {
-                if ( board[oriX + 1][oriY - 1] == 'w' ) {
+                if ( board[oriX + 1][oriY - 1].color == 'w' ) {
                     avaList.push( [oriX + 1, oriY - 1] )
                 }
             }
@@ -259,7 +259,7 @@ class Game {
                 }
             }
             if ( Game.is_in_range( [oriX - 1, oriY - 1] ) ) {
-                if ( board[oriX - 1][oriY - 1] == 'b' ) {
+                if ( board[oriX - 1][oriY - 1].color == 'b' ) {
                     avaList.push( [oriX - 1, oriY - 1] )
                 }
             }
