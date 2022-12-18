@@ -9,7 +9,7 @@ function isEven( num ) {
 }
 
 const Board = () => {
-  // const [board, setBoard] = useState([]);
+//   const [board, setBoard] = useState([]);
   useEffect( () => {
     // Calling the function
     // initialiseChessBoard()
@@ -22,6 +22,7 @@ const Board = () => {
   //     createBoard()
   //     setBoard(newBoard.squares)
   // }
+//   const color = []
   const board = []
 
   const createBoard = () => {
@@ -37,6 +38,7 @@ const Board = () => {
       // board.push(<div className="board-row" key={i} style={{display: "flex"} }>{squareRows}</div>)
       board.push( squareRows )
     }
+    // setBoard(color)
     console.log( board )
     console.log( board[0] )
   }
@@ -48,12 +50,12 @@ const Board = () => {
         return (
           <div id={'row' + rowIdx} style={{ display: "flex" }}> {
             row.map( ( col, colIdx ) => {
-              return (
+              return(
               <Square
               rowIdx={rowIdx}
               colIdx={colIdx}
               color={board[colIdx][rowIdx]}            
-              >temp</Square>
+              />
               )
             } )
           }
