@@ -1,4 +1,4 @@
-import { Game } from "./Game"
+import { Game } from "./Game.js"
 
 const sendData = (data, ws) => {
     ws.send(JSON.stringify(data));
@@ -13,17 +13,18 @@ const boardcastMessage = (wss, data) => {
 export default {
     game: '',
     init:(ws) => {
-        this.game = new Game();
+        game = new Game();
     },
 
-    do: (ws, wss) => {
+    do: (ws, wss, game) => {
         return((async (byteString) => {
             const { data } = byteString;
             const [task, payload] = JSON.parse(data);
             switch (task){
                 case "preview" : {
                     const location = payload;
-                    const response = game.review_ava([location[0]. location[1]]);
+                    const response = game.preview_ava([location[0], location[1]]);
+                    console.log(game)
                     boardcastMessage(wss, response);
                 }
                 break;
