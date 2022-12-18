@@ -11,7 +11,10 @@ const ChessContext = createContext(
         setBoard: () => {},
 
         focusP: [],
-        setFocusP: () => {}
+        setFocusP: () => {},
+
+        preview: () => {},
+        move: () => {}
     }
 )
 
@@ -63,6 +66,14 @@ const ChessProvider = ( props ) => {
         setBoard( init_test() )
     }, [] )
 
+    const preview = ( previewPos ) => {
+        // get preview board 
+    }
+
+    const move = ( from, to ) => {
+        // get moved board 
+    }
+
     return (
         <ChessContext.Provider
             value={
@@ -71,7 +82,10 @@ const ChessProvider = ( props ) => {
                     setBoard,
 
                     focusP,
-                    setFocusP
+                    setFocusP,
+
+                    preview,
+                    move
                 }
             }
             {...props}
