@@ -29,7 +29,11 @@ export default {
                     break;
                 }
 
-                // case ""
+                case "move" :{
+                    const {from, to} = payload;
+                    const response = game.move(from, to);
+                    boardcastMessage(wss, response);
+                }
             }
         }))
     }

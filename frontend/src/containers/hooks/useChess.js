@@ -27,7 +27,6 @@ const ChessProvider = ( props ) => {
     clientWS.onmessage = ( byteString ) => {
         const { data } = byteString
         const newBoard = JSON.parse( data )
-        console.log( data )
         setBoard( newBoard )
     }
 
@@ -43,10 +42,12 @@ const ChessProvider = ( props ) => {
     const preview = ( previewPos ) => {
         // get preview board 
         sendData( ["preview", previewPos] )
+        setFocusP( previewPos )
     }
 
     const move = ( from, to ) => {
         // get moved board 
+        sendData(["move", {from, to}])
     }
 
     const init = () => {

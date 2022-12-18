@@ -356,6 +356,7 @@ class Game {
 
     move( from, to ) {
         this.clean_ava()
+        console.log( from, to)
         let avaBoard = this.preview( from )
         let [fromX, fromY] = from
         let [toX, toY] = to
