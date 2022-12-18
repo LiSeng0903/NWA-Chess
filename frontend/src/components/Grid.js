@@ -5,10 +5,10 @@ const GridWrapper = styled.div`
     width: 100px;
     background-color: ${( { x, y, ava } ) => {
         if ( ava ) {
-            return ( ( x + y ) % 2 == 0 ? '#8a6363' : '#500b0b' )
+            return ( ( x + y ) % 2 == 0 ? '#437b21' : '#b31212' )
         }
         else {
-            return ( ( x + y ) % 2 == 0 ? '#b48585' : '#a21717' )
+            return ( ( x + y ) % 2 == 0 ? '#294b14' : '#8a0e0e' )
         }
     }
     };
