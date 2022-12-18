@@ -31,6 +31,68 @@ class Game {
         }
     }
 
+    static previewFunctions = {
+        'pawn': Game.pawn_preview,
+        'bishop': Game.bishop_preview,
+        'rook': Game.rook_preview,
+        'king': Game.king_preview,
+        'queen': Game.queen_preview,
+        'knight': Game.knight_preview,
+        'nothing': () => { return [] }
+    }
+
+    static king_preview( oriX, oriY, board ) {
+        let clr = board[oriX][oriY].color
+        let avaList = []
+        for ( let x = oriX - 1; x <= oriX + 1; x++ ) {
+            for ( let y = oriY - 1; y <= oriY + 1; y++ ) {
+                if ( Game.is_in_range( [x, y] ) && board[x][y].color != clr ) {
+                    avaList.push( [x, y] )
+                }
+            }
+        }
+        return avaList
+    }
+
+    static queen_preview( oriX, oriY, board ) {
+
+    }
+
+    static bishop_preview( oriX, oriY, board ) {
+
+    }
+
+    static knight_preview( oriX, oriY, board ) {
+        let clr = board[oriX][oriY].color
+        let avaList = []
+
+        avaList.push( [oriX - 1, oriY - 2] )
+        avaList.push( [oriX - 2, oriY - 1] )
+        avaList.push( [oriX - 2, oriY + 1] )
+        avaList.push( [oriX - 1, oriY + 2] )
+        avaList.push( [oriX + 1, oriY - 2] )
+        avaList.push( [oriX + 2, oriY - 1] )
+        avaList.push( [oriX + 2, oriY + 1] )
+        avaList.push( [oriX + 1, oriY + 2] )
+
+        avaList = avaList.filter( ( avaPos ) => { return Game.is_in_range( avaPos ) } )
+        avaList = avaList.filter( ( avaPos ) => { return board[avaPos[0]][avaPos[1]].color != clr } )
+        return avaList
+    }
+
+    static rook_preview( oriX, oriY, board ) {
+
+    }
+
+    static pawn_preview( oriX, oriY, board ) {
+
+    }
+
+    static is_in_range( examPos ) {
+        let [x, y] = examPos
+        return ( x >= 0 && x <= 7 && y >= 0 && y <= 7 )
+    }
+
     constructor() {
         this.board = []
         this.init_board()
@@ -121,72 +183,14 @@ class Game {
         let [x, y] = previewPos
         let pieceType = this.board[x][y].type
 
-        let avaList = []
-        if ( pieceType == 'king' ) {
-            avaList = this.king_preview( x, y )
-        }
-        else if ( pieceType == 'knight' ) {
-            avaList = this.knight_preview( x, y )
-        }
-
+        let avaList = Game.previewFunctions[pieceType]( x, y, this.board )
         for ( let i = 0; i < avaList.length; i++ ) {
             let [x, y] = avaList[i]
             this.board[x][y].ava = true
         }
     }
 
-    is_in_range( examPos ) {
-        let [x, y] = examPos
-        return ( x >= 0 && x <= 7 && y >= 0 && y <= 7 )
-    }
 
-    // preview functions 
-    king_preview( oriX, oriY ) {
-        let clr = this.board[oriX][oriY].color
-        let avaList = []
-        for ( let x = oriX - 1; x <= oriX + 1; x++ ) {
-            for ( let y = oriY - 1; y <= oriY + 1; y++ ) {
-                if ( this.is_in_range( [x, y] ) && this.board[x][y].color != clr ) {
-                    avaList.push( [x, y] )
-                }
-            }
-        }
-        return avaList
-    }
-
-    queen_preview( oriX, oriY ) {
-
-    }
-
-    bishop_preview( oriX, oriY ) {
-
-    }
-
-    knight_preview( oriX, oriY ) {
-        let clr = this.board[oriX][oriY].color
-        let avaList = []
-
-        avaList.push( [oriX - 1, oriY - 2] )
-        avaList.push( [oriX - 2, oriY - 1] )
-        avaList.push( [oriX - 2, oriY + 1] )
-        avaList.push( [oriX - 1, oriY + 2] )
-        avaList.push( [oriX + 1, oriY - 2] )
-        avaList.push( [oriX + 2, oriY - 1] )
-        avaList.push( [oriX + 2, oriY + 1] )
-        avaList.push( [oriX + 1, oriY + 2] )
-
-        avaList = avaList.filter( ( avaPos ) => { return this.is_in_range( avaPos ) } )
-        avaList = avaList.filter( ( avaPos ) => { return this.board[avaPos[0]][avaPos[1]].color != clr } )
-        return avaList
-    }
-
-    rook_preview( oriX, oriY ) {
-
-    }
-
-    pawn_preview( oriX, oriY ) {
-
-    }
 
     clean_ava() {
         for ( let x = 0; x < 8; x++ ) {
