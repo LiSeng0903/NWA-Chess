@@ -376,9 +376,8 @@ class Game {
         return this.board
     }
 
-    preview_ava( previewPos ) {
+    preview( previewPos ) {
         this.clean_ava()
-
         let [x, y] = previewPos
         let pieceType = this.board[x][y].type
 
@@ -387,6 +386,7 @@ class Game {
             let [x, y] = avaList[i]
             this.board[x][y].ava = true
         }
+        return this.board
     }
 
     clean_ava() {
