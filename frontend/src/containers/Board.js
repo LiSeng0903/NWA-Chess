@@ -77,7 +77,7 @@ const Board = () => {
         // preview 
         if ( board[x][y].color == myColor ) {
             setFocusP( [x, y] )
-            preview( focusP )
+            preview( [x, y] )
         }
         // move 
         else if ( board[x][y].ava == true ) {

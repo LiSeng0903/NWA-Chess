@@ -18,7 +18,6 @@ export default {
             const [task, payload] = JSON.parse( data )
             switch ( task ) {
                 case "init": {
-                    console.log( 'init' )
                     const newBoard = game.board
                     const turn = game.turn;
                     let playerColor = '';
@@ -43,8 +42,8 @@ export default {
                 case "move": {
                     const { from, to } = payload
                     const newBoard = game.move( from, to )
-                    const turn = game.turn;
-                    boardcastMessage( wss, ["do", {newBoard, turn}] )
+                    const turn = game.turn
+                    boardcastMessage( wss, ["do", { newBoard, turn }] )
                     break
                 }
             }

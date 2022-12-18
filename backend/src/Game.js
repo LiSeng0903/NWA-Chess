@@ -388,10 +388,10 @@ class Game {
     preview( previewPos ) {
         this.clean_ava()
         let [x, y] = previewPos
+        console.log( previewPos )
         let pieceType = this.board[x][y].type
 
         let avaList = Game.previewFunctions[pieceType]( x, y, this.board )
-        console.log( avaList )
         for ( let i = 0; i < avaList.length; i++ ) {
             let [x, y] = avaList[i]
             this.board[x][y].ava = true
