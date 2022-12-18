@@ -21,22 +21,23 @@ export default {
                     console.log( 'init' )
                     const newBoard = game.board
                     const turn = game.turn;
-                    let player2 = '';
+                    let playerColor = '';
                     if(game.playerCnt === 2){
-                        player2 = 'b'
+                        playerColor = 'b'
                     }else{
-                        player2 = 'w'
+                        playerColor = 'w'
                         game.playerCnt++;
                     }
                     console.log(game.playerCnt)
-                    sendData(["init", { newBoard, turn, player2 }], ws)
+                    sendData(["init", { newBoard, turn, playerColor }], ws)
                     break
                 }
                 case "preview": {
                     const location = payload
                     const newBoard = game.preview( [location[0], location[1]] )
                     const turn = game.turn;
-                    boardcastMessage( wss, ["do", {newBoard, turn}] )
+                    sendData(["do", {newBoard, turn}], ws)
+                    // boardcastMessage( wss, ["do", {newBoard, turn}] )
                     break
                 }
                 case "move": {
