@@ -48,14 +48,13 @@ const Board = () => {
         return (
           <div id={'row' + rowIdx} style={{ display: "flex" }}> {
             row.map( ( col, colIdx ) => {
-              // return (
-              // <Square
-              // rowIdx={rowIdx}
-              // colIdx={colIdx}
-              // color={board[colIdx][rowIdx]}            
-              // >temp</Square>
-              // )
-              return ( 'ttt' )
+              return (
+              <Square
+              rowIdx={rowIdx}
+              colIdx={colIdx}
+              color={board[colIdx][rowIdx]}            
+              >temp</Square>
+              )
             } )
           }
           </div>
