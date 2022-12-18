@@ -56,8 +56,10 @@ class Game {
 
     static queen_preview( oriX, oriY, board ) {
         let clr = board[oriX][oriY].color
-        let avaList = []
+        let avaList = Game.bishop_preview( oriX, oriY, board )
+        avaList.concat( Game.rook_preview( oriX, oriY, board ) )
 
+        return
     }
 
     static bishop_preview( oriX, oriY, board ) {
