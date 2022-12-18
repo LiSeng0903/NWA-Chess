@@ -61,7 +61,62 @@ class Game {
     }
 
     static bishop_preview( oriX, oriY, board ) {
+        let clr = board[oriX][oriY].color
+        let avaList = []
 
+        // left up 
+        if ( Game.is_in_range( [oriX - 1, oriY - 1] ) ) {
+            for ( let x = oriX - 1, y = oriY - 1; x >= 0 && y >= 0; x--, y-- ) {
+                if ( board[x][y].type != 'nothing' ) {
+                    if ( board[x][y].color != clr ) {
+                        avaList.push( [x, y] )
+                    }
+                    break
+                }
+                avaList.push( [x, y] )
+            }
+        }
+
+        // left down 
+        if ( Game.is_in_range( [oriX + 1, oriY - 1] ) ) {
+            for ( let x = oriX + 1, y = oriY - 1; x <= 7 && y >= 0; x++, y-- ) {
+                if ( board[x][y].type != 'nothing' ) {
+                    if ( board[x][y].color != clr ) {
+                        avaList.push( [x, y] )
+                    }
+                    break
+                }
+                avaList.push( [x, y] )
+            }
+        }
+
+        // right up
+        if ( Game.is_in_range( [oriX - 1, oriY + 1] ) ) {
+            for ( let x = oriX - 1, y = oriY + 1; x >= 0 && y <= 7; x--, y++ ) {
+                if ( board[x][y].type != 'nothing' ) {
+                    if ( board[x][y].color != clr ) {
+                        avaList.push( [x, y] )
+                    }
+                    break
+                }
+                avaList.push( [x, y] )
+            }
+        }
+
+        // right down 
+        if ( Game.is_in_range( [oriX + 1, oriY + 1] ) ) {
+            for ( let x = oriX + 1, y = oriY + 1; x <= 7 && y <= 7; x++, y++ ) {
+                if ( board[x][y].type != 'nothing' ) {
+                    if ( board[x][y].color != clr ) {
+                        avaList.push( [x, y] )
+                    }
+                    break
+                }
+                avaList.push( [x, y] )
+            }
+        }
+
+        return avaList
     }
 
     static knight_preview( oriX, oriY, board ) {
