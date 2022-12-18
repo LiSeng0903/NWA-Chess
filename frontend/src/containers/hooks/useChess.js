@@ -63,16 +63,11 @@ const ChessProvider = ( props ) => {
     const [focusP, setFocusP] = useState( [] )
 
 
-    clientWS.onmessage = (byteString) => {
-        const { data } = byteString;
-<<<<<<< HEAD
-        const newBoard = JSON.parse(data);
-        console.log(data)
-=======
-        console.log(data)
-        const [newBoard] = JSON.parse(data);
->>>>>>> 975d91b0c7b679f02aca483901fa44806dc4898e
-        setBoard(newBoard);
+    clientWS.onmessage = ( byteString ) => {
+        const { data } = byteString
+        const newBoard = JSON.parse( data )
+        console.log( data )
+        setBoard( newBoard )
     }
 
 
@@ -80,13 +75,13 @@ const ChessProvider = ( props ) => {
         setBoard( init_test() )
     }, [] )
 
-    useEffect(()=>{
-        console.log(board)
-    }, [board])
+    useEffect( () => {
+        console.log( board )
+    }, [board] )
 
     const preview = ( previewPos ) => {
         // get preview board 
-        sendData(["preview", previewPos]);
+        sendData( ["preview", previewPos] )
     }
 
     const move = ( from, to ) => {
