@@ -93,17 +93,33 @@ const Board = () => {
     return (
         <BoardWrapper>
             {
-                board.map( ( row, x ) => {
-                    return (
-                        <BoardRowWrapper>
-                            {row.map( ( grd, y ) => {
-                                return (
-                                    <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={grd.ava} clickHandler={( event ) => { clickHandler( x, y ) }} />
-                                )
-                            } )}
-                        </BoardRowWrapper>
+                myColor == 'w' ? (
+                    board.map( ( row, x ) => {
+                        return (
+                            <BoardRowWrapper>
+                                {row.map( ( grd, y ) => {
+                                    return (
+                                        <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={grd.ava} clickHandler={( event ) => { clickHandler( x, y ) }} />
+                                    )
+                                } )}
+                            </BoardRowWrapper>
+                        )
+                    } )
+                ) :
+                    (
+                        board.slice( 0 ).reverse().map( ( row, x ) => {
+                            return (
+                                <BoardRowWrapper>
+                                    {row.slice( 0 ).reverse().map( ( grd, y ) => {
+                                        return (
+                                            <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={grd.ava} clickHandler={( event ) => { clickHandler( x, y ) }} />
+                                        )
+                                    } )}
+                                </BoardRowWrapper>
+                            )
+                        } )
                     )
-                } )
+
             }
         </BoardWrapper>
     )
