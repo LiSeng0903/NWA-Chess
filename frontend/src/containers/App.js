@@ -6,6 +6,7 @@ import Login from "./Login"
 
 const AppWrapper = styled.div`
     height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <AppWrapper className="App" style={{ display: 'flex' }}>
-      { name !== '' ?  <Board /> : Login}
+      { name !== '' ?  <Board /> : <Login />}
     </AppWrapper>
   )
 }
