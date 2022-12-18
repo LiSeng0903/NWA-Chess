@@ -50,6 +50,7 @@ const ChessProvider = ( props ) => {
     }
 
     const init = () => {
+        // get initial board 
         sendData( ['init'] )
     }
 
