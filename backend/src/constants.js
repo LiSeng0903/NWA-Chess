@@ -1,4 +1,4 @@
-const DEBUG_MODE = true
+const DEBUG_MODE = false
 const POS = [2, 0]
 const TYPE = 'pawn'
 
