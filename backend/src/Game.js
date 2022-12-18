@@ -246,7 +246,7 @@ class Game {
                 forward += 1
             }
             for ( let x = oriX - 1; x >= oriX - forward; x-- ) {
-                console.log( `x is ${x}`)
+                console.log( `x is ${x}` )
                 if ( board[x][oriY].type != 'nothing' ) {
                     break
                 }
@@ -276,6 +276,7 @@ class Game {
     constructor() {
         this.board = []
         this.init_board()
+        this.turn = 'w'
     }
 
     init_board() {
@@ -356,7 +357,6 @@ class Game {
 
     move( from, to ) {
         this.clean_ava()
-        console.log( from, to)
         let avaBoard = this.preview( from )
         let [fromX, fromY] = from
         let [toX, toY] = to
@@ -374,6 +374,13 @@ class Game {
         }
 
         this.clean_ava()
+
+        if ( this.turn == 'w' ) {
+            this.turn = 'b'
+        }
+        else {
+            this.turn = 'w'
+        }
         return this.board
     }
 
