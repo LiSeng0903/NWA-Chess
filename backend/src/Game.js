@@ -347,6 +347,24 @@ class Game {
 
     move( from, to ) {
         this.clean_ava()
+        let avaBoard = this.preview( from )
+        let [fromX, fromY] = from
+        let [toX, toY] = to
+        if ( avaBoard[toX][toY].ava == true ) {
+            let piece = this.board[fromX][fromY]
+            this.board[fromX][fromY] = {
+                type: 'nothing',
+                color: 'nothing',
+                ava: false
+            }
+            this.board[toX][toY] = piece
+        }
+        else {
+            return this.board
+        }
+
+        this.clean_ava()
+        return this.board
     }
 
     preview_ava( previewPos ) {
