@@ -72,7 +72,7 @@ const Board = ( { board } ) => {
                         <BoardRowWrapper>
                             {row.map( ( grd, y ) => {
                                 return (
-                                    <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={false} />
+                                    <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={grd.ava} />
                                 )
                             } )}
                         </BoardRowWrapper>
