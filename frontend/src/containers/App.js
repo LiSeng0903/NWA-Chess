@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 import { Board } from "./Board"
 import { useChess } from "./hooks/useChess"
-import Login from "./Login"
 
 const AppWrapper = styled.div`
     height: 100vh;
@@ -17,7 +16,7 @@ function App() {
 
   return (
     <AppWrapper className="App" style={{ display: 'flex' }}>
-      { name !== '' ?  <Board /> : <Login />}
+      <Board />
     </AppWrapper>
   )
 }
