@@ -26,13 +26,8 @@ const ChessProvider = ( props ) => {
 
     clientWS.onmessage = (byteString) => {
         const { data } = byteString;
-<<<<<<< HEAD
         const newBoard = JSON.parse(data);
         console.log(data)
-=======
-        console.log(data)
-        const [newBoard] = JSON.parse(data);
->>>>>>> 93acdbb (connecting)
         setBoard(newBoard);
     }
 
