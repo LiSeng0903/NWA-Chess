@@ -277,6 +277,7 @@ class Game {
         this.board = []
         this.init_board()
         this.turn = 'w'
+        this.playerCnt = 0
     }
 
     init_board() {
