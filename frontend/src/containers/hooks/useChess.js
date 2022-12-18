@@ -13,6 +13,9 @@ const ChessContext = createContext(
         focusP: [],
         setFocusP: () => {},
 
+        name: "",
+        setName: () => {},
+
         preview: () => {},
         move: () => {}
     }
@@ -22,6 +25,8 @@ const ChessContext = createContext(
 const ChessProvider = ( props ) => {
     const [board, setBoard] = useState( [] )
     const [focusP, setFocusP] = useState( [] )
+    const [name, setName] = useState("")
+
 
     clientWS.onmessage = ( byteString ) => {
         const { data } = byteString
@@ -57,6 +62,9 @@ const ChessProvider = ( props ) => {
 
                     focusP,
                     setFocusP,
+
+                    name,
+                    setName,
 
                     preview,
                     move
