@@ -1,4 +1,4 @@
-import { DEBUG_MODE } from "./constants.js"
+import { DEBUG_MODE, POS, TYPE } from "./constants.js"
 
 class Game {
     static keys = {
@@ -55,6 +55,8 @@ class Game {
     }
 
     static queen_preview( oriX, oriY, board ) {
+        let clr = board[oriX][oriY].color
+        let avaList = []
 
     }
 
@@ -81,7 +83,67 @@ class Game {
     }
 
     static rook_preview( oriX, oriY, board ) {
+        let clr = board[oriX][oriY].color
+        let avaList = []
 
+        // upward check 
+        if ( oriX != 0 ) {
+
+            for ( let x = oriX - 1; x >= 0; x-- ) {
+                if ( board[x][oriY].type != 'nothing' ) {
+                    // different clr 
+                    if ( board[x][oriY].color != clr ) {
+                        avaList.push( [x, oriY] )
+                    }
+                    break
+                }
+                avaList.push( [x, oriY] )
+            }
+        }
+
+        // Downward check 
+        if ( oriX != 7 ) {
+            for ( let x = oriX + 1; x <= 7; x++ ) {
+                if ( board[x][oriY].type != 'nothing' ) {
+                    // different clr 
+                    if ( board[x][oriY].color != clr ) {
+                        avaList.push( [x, oriY] )
+                    }
+                    break
+                }
+                avaList.push( [x, oriY] )
+            }
+        }
+
+        // Left 
+        if ( oriY != 0 ) {
+            for ( let y = oriY - 1; y >= 0; y-- ) {
+                if ( board[oriX][y].type != 'nothing' ) {
+                    // different clr 
+                    if ( board[oriX][y].color != clr ) {
+                        avaList.push( [oriX, y] )
+                    }
+                    break
+                }
+                avaList.push( [oriX, y] )
+            }
+        }
+
+        // Right 
+        if ( oriY != 7 ) {
+            for ( let y = oriY + 1; y <= 7; y++ ) {
+                if ( board[oriX][y].type != 'nothing' ) {
+                    // different clr 
+                    if ( board[oriX][y].color != clr ) {
+                        avaList.push( [oriX, y] )
+                    }
+                    break
+                }
+                avaList.push( [oriX, y] )
+            }
+        }
+
+        return avaList
     }
 
     static pawn_preview( oriX, oriY, board ) {
@@ -136,8 +198,8 @@ class Game {
         }
 
         if ( DEBUG_MODE ) {
-            this.board[4][4].type = 'knight'
-            this.board[4][4].color = 'w'
+            this.board[POS[0]][POS[1]].type = TYPE
+            this.board[POS[0]][POS[1]].color = 'w'
         }
     }
 
@@ -189,8 +251,6 @@ class Game {
             this.board[x][y].ava = true
         }
     }
-
-
 
     clean_ava() {
         for ( let x = 0; x < 8; x++ ) {
