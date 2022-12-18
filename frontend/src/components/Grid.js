@@ -23,9 +23,9 @@ const GridImgWrapper = styled.img`
 
 const Grid = ( { x, y, image, ava, clickHandler } ) => {
     return (
-        <GridWrapper x={x} y={y} onClick={clickHandler}>
+        <GridWrapper x={x} y={y} ava={ava} onClick={clickHandler} >
             {image && <GridImgWrapper src={image} alt="no img" />}
-        </GridWrapper>
+        </GridWrapper >
     )
 }
 
