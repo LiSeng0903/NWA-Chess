@@ -23,7 +23,11 @@ export default {
             switch (task){
                 case "preview" : {
                     const location = payload;
+<<<<<<< HEAD
                     const response = game.preview([location[0], location[1]]);
+=======
+                    const response = game.preview_ava([location[0], location[1]]);
+>>>>>>> 975d91b0c7b679f02aca483901fa44806dc4898e
                     console.log(game)
                     boardcastMessage(wss, response);
                 }
