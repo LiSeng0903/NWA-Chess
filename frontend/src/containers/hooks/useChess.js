@@ -39,21 +39,20 @@ const ChessProvider = ( props ) => {
     clientWS.onmessage = ( byteString ) => {
         const { data } = byteString
         const [task, response] = JSON.parse( data )
-        switch(task){
+        switch ( task ) {
             case "init": {
-                const {newBoard, turn, playerColor} = response;
-                console.log(response);
-                setBoard( newBoard );
-                setTurn( turn );
-                setMyColor( playerColor );
-                break;
+                const { newBoard, turn, playerColor } = response
+                setBoard( newBoard )
+                setTurn( turn )
+                setMyColor( playerColor )
+                break
             }
 
             case "do": {
-                const { newBoard, turn } = response;
-                setBoard( newBoard );
-                setTurn( turn );
-                break;
+                const { newBoard, turn } = response
+                setBoard( newBoard )
+                setTurn( turn )
+                break
             }
         }
 
@@ -64,9 +63,9 @@ const ChessProvider = ( props ) => {
         init()
     }, [] )
 
-    useEffect(()=>{
-        console.log(myColor);
-    }, [board])
+    useEffect( () => {
+        console.log( `My color is ${myColor == 'w' ? 'white' : 'black'}` )
+    }, [board] )
 
     const preview = ( previewPos ) => {
         // get preview board 
