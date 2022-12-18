@@ -19,22 +19,21 @@ export default {
             switch ( task ) {
                 case "init": {
                     const newBoard = game.board
-                    const turn = game.turn;
-                    let playerColor = '';
-                    if(game.playerCnt === 2){
+                    const turn = game.turn
+                    let playerColor = ''
+                    if ( game.playerCnt === 2 ) {
                         playerColor = 'b'
-                    }else{
+                    } else {
                         playerColor = 'w'
-                        game.playerCnt++;
+                        game.playerCnt++
                     }
-                    sendData(["init", { newBoard, turn, playerColor }], ws)
+                    sendData( ["init", { newBoard, turn, playerColor }], ws )
                     break
                 }
                 case "preview": {
-                    const location = payload
-                    const newBoard = game.preview( [location[0], location[1]] )
-                    const turn = game.turn;
-                    sendData(["do", {newBoard, turn}], ws)
+                    const newBoard = game.preview( payload )
+                    const turn = game.turn
+                    sendData( ["do", { newBoard, turn }], ws )
                     break
                 }
                 case "move": {

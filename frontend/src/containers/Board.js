@@ -83,8 +83,9 @@ const Board = () => {
         else if ( board[x][y].ava == true ) {
             move( focusP, [x, y] )
         }
-        // cancel focus
+        // cancel preview
         else {
+            console.log( 'cancel preview' )
             setFocusP( [] )
             preview( [] )
         }

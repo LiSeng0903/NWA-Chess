@@ -386,7 +386,7 @@ class Game {
 
     preview( previewPos ) {
         this.clean_ava()
-        if ( previewPos == [] ) {
+        if ( previewPos.length == 0 ) {
             return this.board
         }
 
