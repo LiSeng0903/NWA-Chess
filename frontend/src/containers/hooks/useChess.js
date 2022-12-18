@@ -38,13 +38,35 @@ const ChessProvider = ( props ) => {
 
     clientWS.onmessage = ( byteString ) => {
         const { data } = byteString
-        const newBoard = JSON.parse( data )
-        setBoard( newBoard )
+        const [task, response] = JSON.parse( data )
+        switch(task){
+            case "init": {
+                const {newBoard, turn, player} = response;
+                console.log(response);
+                setBoard( newBoard );
+                setTurn( turn );
+                setMyColor( player );
+                break;
+            }
+
+            case "do": {
+                const { newBoard, turn } = response;
+                setBoard( newBoard );
+                setTurn( turn );
+                break;
+            }
+        }
+
+        // setBoard( newBoard )
     }
 
     useEffect( () => {
         init()
     }, [] )
+
+    useEffect(()=>{
+        console.log(myColor);
+    }, [board])
 
     const preview = ( previewPos ) => {
         // get preview board 

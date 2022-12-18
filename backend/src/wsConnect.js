@@ -10,6 +10,8 @@ const boardcastMessage = ( wss, data ) => {
     } )
 }
 
+let player = 'w';
+
 export default {
     game: '',
     init: ( ws ) => {
@@ -23,20 +25,24 @@ export default {
             switch ( task ) {
                 case "init": {
                     console.log( 'init' )
-                    const response = game.board
-                    boardcastMessage( wss, response )
+                    const newBoard = game.board
+                    const turn = game.turn;
+                    boardcastMessage( wss, ["init", { newBoard, turn, player }] )
+                    player = 'b';
                     break
                 }
                 case "preview": {
                     const location = payload
-                    const response = game.preview( [location[0], location[1]] )
-                    boardcastMessage( wss, response )
+                    const newBoard = game.preview( [location[0], location[1]] )
+                    const turn = game.turn;
+                    boardcastMessage( wss, ["do", {newBoard, turn}] )
                     break
                 }
                 case "move": {
                     const { from, to } = payload
-                    const response = game.move( from, to )
-                    boardcastMessage( wss, response )
+                    const newBoard = game.move( from, to )
+                    const turn = game.turn;
+                    boardcastMessage( wss, ["do", {newBoard, turn}] )
                     break
                 }
             }
