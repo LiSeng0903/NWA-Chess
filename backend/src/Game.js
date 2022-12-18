@@ -1,6 +1,36 @@
 import { DEBUG_MODE } from "./constants.js"
 
 class Game {
+    static keys = {
+        'pawn': {
+            'w': '♙',
+            'b': '♟'
+        },
+        'bishop': {
+            'w': '♗',
+            'b': '♝'
+        },
+        'rook': {
+            'w': '♖',
+            'b': '♜'
+        },
+        'knight': {
+            'w': '♘',
+            'b': '♞'
+        },
+        'queen': {
+            'w': '♕',
+            'b': '♛'
+        },
+        'king': {
+            'w': '♔',
+            'b': '♚'
+        },
+        'nothing': {
+            'nothing': ' '
+        }
+    }
+
     constructor() {
         this.board = []
         this.init_board()
@@ -12,7 +42,7 @@ class Game {
             for ( let j = 0; j < 8; j++ ) {
                 this.board[i].push( {
                     type: 'nothing',
-                    color: ( i == 0 || i == 1 ) ? 'b' : ( ( i == 6 || i == 7 ) ? 'w' : '' ),
+                    color: ( i == 0 || i == 1 ) ? 'b' : ( ( i == 6 || i == 7 ) ? 'w' : 'nothing' ),
                     ava: false
                 }
                 )
@@ -49,17 +79,28 @@ class Game {
         }
     }
 
-    draw_board() {
+    draw_board( mode = 'type' ) {
         for ( let i = 0; i < 19; i++ ) {
             process.stdout.write( '-' )
         }
         process.stdout.write( '\n' )
 
-        let board = this.board
         for ( let x = 0; x < 8; x++ ) {
             process.stdout.write( '| ' )
             for ( let y = 0; y < 8; y++ ) {
-                process.stdout.write( String( board[x][y].ava )[2] + ' ' )
+                let focusPiece = this.board[x][y]
+                if ( mode == 'type' ) {
+                    process.stdout.write( Game.keys[focusPiece.type][focusPiece.color] )
+                }
+                else if ( mode == 'ava' ) {
+                    if ( focusPiece.ava == true ) {
+                        process.stdout.write( 'O' )
+                    }
+                    else {
+                        process.stdout.write( '.' )
+                    }
+                }
+                process.stdout.write( ' ' )
             }
             process.stdout.write( '|' )
             process.stdout.write( '\n' )
@@ -135,6 +176,7 @@ class Game {
         avaList.push( [oriX + 1, oriY + 2] )
 
         avaList = avaList.filter( ( avaPos ) => { return this.is_in_range( avaPos ) } )
+        avaList = avaList.filter( ( avaPos ) => { return this.board[avaPos[0]][avaPos[1]].color != clr } )
         return avaList
     }
 
