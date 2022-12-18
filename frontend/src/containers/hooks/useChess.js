@@ -41,11 +41,11 @@ const ChessProvider = ( props ) => {
         const [task, response] = JSON.parse( data )
         switch(task){
             case "init": {
-                const {newBoard, turn, player} = response;
+                const {newBoard, turn, player2} = response;
                 console.log(response);
                 setBoard( newBoard );
                 setTurn( turn );
-                setMyColor( player );
+                setMyColor( player2 );
                 break;
             }
 

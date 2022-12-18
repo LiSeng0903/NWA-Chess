@@ -12,11 +12,11 @@ const serverWS = new WebSocket.Server({server})
 
 let game = ''
 
-serverWS.on("connection", (ws) => {
-    game = new Game()
-    console.log("Start Game")
-    // console.log(game)
-})
+game = new Game()
+// serverWS.on("connection", (ws) => {
+//     console.log("Start Game")
+//     // console.log(game)
+// })
 
 serverWS.on("connection", (ws) => {
     ws.onmessage = wsConnect.do(ws, serverWS, game);

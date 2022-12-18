@@ -10,14 +10,8 @@ const boardcastMessage = ( wss, data ) => {
     } )
 }
 
-let player = 'w';
 
 export default {
-    game: '',
-    init: ( ws ) => {
-        game = new Game()
-    },
-
     do: ( ws, wss, game ) => {
         return ( ( async ( byteString ) => {
             const { data } = byteString
@@ -27,8 +21,15 @@ export default {
                     console.log( 'init' )
                     const newBoard = game.board
                     const turn = game.turn;
-                    boardcastMessage( wss, ["init", { newBoard, turn, player }] )
-                    player = 'b';
+                    let player2 = '';
+                    if(game.playerCnt === 2){
+                        player2 = 'b'
+                    }else{
+                        player2 = 'w'
+                        game.playerCnt++;
+                    }
+                    console.log(game.playerCnt)
+                    sendData(["init", { newBoard, turn, player2 }], ws)
                     break
                 }
                 case "preview": {
