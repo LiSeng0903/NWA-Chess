@@ -13,9 +13,9 @@ const GridImgWrapper = styled.img`
     height: 70%;
 `
 
-const Grid = ( { x, y, image, ava } ) => {
+const Grid = ( { x, y, image, ava, clickHandler } ) => {
     return (
-        <GridWrapper x={x} y={y}>
+        <GridWrapper x={x} y={y} onClick={clickHandler}>
             {image && <GridImgWrapper src={image} alt="no img" />}
         </GridWrapper>
     )
