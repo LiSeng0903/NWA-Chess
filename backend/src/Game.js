@@ -386,6 +386,10 @@ class Game {
 
     preview( previewPos ) {
         this.clean_ava()
+        if ( previewPos == [] ) {
+            return this.board
+        }
+
         let [x, y] = previewPos
         let pieceType = this.board[x][y].type
 
