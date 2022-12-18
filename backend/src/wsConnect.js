@@ -27,7 +27,6 @@ export default {
                         playerColor = 'w'
                         game.playerCnt++;
                     }
-                    console.log(game.playerCnt)
                     sendData(["init", { newBoard, turn, playerColor }], ws)
                     break
                 }
@@ -36,7 +35,6 @@ export default {
                     const newBoard = game.preview( [location[0], location[1]] )
                     const turn = game.turn;
                     sendData(["do", {newBoard, turn}], ws)
-                    // boardcastMessage( wss, ["do", {newBoard, turn}] )
                     break
                 }
                 case "move": {
