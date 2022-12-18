@@ -206,7 +206,7 @@ class Game {
         let clr = board[oriX][oriY].color
         let avaList = []
 
-        // white 
+        // black
         if ( clr == 'b' ) {
             if ( oriX == 7 ) {
                 return []
@@ -216,7 +216,7 @@ class Game {
             if ( oriX == 1 ) {
                 forward += 1
             }
-            for ( let x = oriX + 1; x <= oriX + forward + 1; x++ ) {
+            for ( let x = oriX + 1; x <= oriX + forward; x++ ) {
                 if ( board[x][oriY].type != 'nothing' ) {
                     break
                 }
@@ -235,8 +235,7 @@ class Game {
                 }
             }
         }
-
-
+        // white 
         else if ( clr == 'w' ) {
             if ( oriX == 0 ) {
                 return []
@@ -246,7 +245,7 @@ class Game {
             if ( oriX == 6 ) {
                 forward += 1
             }
-            for ( let x = oriX - 1; x <= oriX - forward - 1; x-- ) {
+            for ( let x = oriX - 1; x <= oriX - forward; x-- ) {
                 if ( board[x][oriY].type != 'nothing' ) {
                     break
                 }
