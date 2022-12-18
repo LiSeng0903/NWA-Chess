@@ -2,10 +2,11 @@
     width: 80px;
     height: 80px;
     float: left;
+    background-color: aliceblue;
   }
   
   .black {
-    background-color: black;
+    background-color: rgb(76, 105, 131);
   }
   
   .white {
