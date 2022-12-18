@@ -1,5 +1,6 @@
-import { Board } from "./containers/Board"
 import styled from "styled-components"
+
+import { Board } from "./Board"
 
 const AppWrapper = styled.div`
     height: 100vh;
