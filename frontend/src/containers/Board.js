@@ -66,16 +66,22 @@ const BoardRowWrapper = styled.div`
 `
 
 const Board = () => {
-    const { board, setBoard, focusP, setFocusP, preview, move } = useChess()
+    const { board, setBoard, focusP, setFocusP, preview, move, turn, myColor } = useChess()
 
     const clickHandler = ( x, y ) => {
-        // preview 
-        if ( board[x][y].type != 'nothing' ) {
-            preview( [x, y] )
+        if ( turn != myColor ) {
+            return
         }
 
-        // move 
-        if ( board[x][y].type == 'nothing' ) {
+        // preview 
+        if ( ( board[x][y].type != 'nothing' ) && ( board[x][y].color == myColor ) ) {
+            setFocusP( [x, y] )
+            preview( [x, y] )
+        }
+        else if ( ( board[x][y].type == 'nothing' ) ) {
+            setFocusP( [] )
+        }
+        else if ( ( !focusP ) && ( board[x][y].ava == true ) ) {
             move( focusP, [x, y] )
         }
     }

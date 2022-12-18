@@ -49,7 +49,6 @@ const ChessProvider = ( props ) => {
     const preview = ( previewPos ) => {
         // get preview board 
         sendData( ["preview", previewPos] )
-        setFocusP( previewPos )
     }
 
     const move = ( from, to ) => {
