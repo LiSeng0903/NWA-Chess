@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import '../index.css';
-import Board from './board.js';
+import '../index.css'
+import Board from './board.js'
 import King from '../pieces/king'
 // import FallenSoldierBlock from './fallen-soldier-block.js';
-import initialiseChessBoard from '../board_init';
+import initialiseChessBoard from '../board_init'
 
 export default class Game extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       squares: initialiseChessBoard(),
       whiteFallenSoldiers: [],
@@ -20,9 +20,9 @@ export default class Game extends React.Component {
     }
   }
 
-  handleClick(i) {
-    const squares = [...this.state.squares];
-    console.log(squares)
+  handleClick( i ) {
+    const squares = [...this.state.squares]
+    console.log( squares )
 
     // if (this.state.sourceSelection === -1) {
     //   if (!squares[i] || squares[i].player !== this.state.player) {
@@ -100,28 +100,28 @@ export default class Game extends React.Component {
     // }
   }
 
-//   getKingPosition(squares, player) {
-//     return squares.reduce((acc, curr, i) =>
-//       acc || //King may be only one, if we had found it, returned his position
-//       ((curr //current squre mustn't be a null
-//         && (curr.getPlayer() === player)) //we are looking for aspecial king 
-//         && (curr instanceof King)
-//         && i), // returned position if all conditions are completed
-//       null)
-//   }
+  //   getKingPosition(squares, player) {
+  //     return squares.reduce((acc, curr, i) =>
+  //       acc || //King may be only one, if we had found it, returned his position
+  //       ((curr //current squre mustn't be a null
+  //         && (curr.getPlayer() === player)) //we are looking for aspecial king 
+  //         && (curr instanceof King)
+  //         && i), // returned position if all conditions are completed
+  //       null)
+  //   }
 
-//   isCheckForPlayer(squares, player) {
-//     const opponent = player === 1 ? 2 : 1
-//     const playersKingPosition = this.getKingPosition(squares, player)
-//     const canPieceKillPlayersKing = (piece, i) => piece.isMovePossible(playersKingPosition, i, squares)
-//     return squares.reduce((acc, curr, idx) =>
-//       acc ||
-//       (curr &&
-//         (curr.getPlayer() === opponent) &&
-//         canPieceKillPlayersKing(curr, idx)
-//         && true),
-//       false)
-//   }
+  //   isCheckForPlayer(squares, player) {
+  //     const opponent = player === 1 ? 2 : 1
+  //     const playersKingPosition = this.getKingPosition(squares, player)
+  //     const canPieceKillPlayersKing = (piece, i) => piece.isMovePossible(playersKingPosition, i, squares)
+  //     return squares.reduce((acc, curr, idx) =>
+  //       acc ||
+  //       (curr &&
+  //         (curr.getPlayer() === opponent) &&
+  //         canPieceKillPlayersKing(curr, idx)
+  //         && true),
+  //       false)
+  //   }
 
   render() {
 
@@ -163,6 +163,6 @@ export default class Game extends React.Component {
       </div>
 
 
-    );
+    )
   }
 }
