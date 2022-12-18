@@ -112,7 +112,7 @@ const Board = () => {
                                 <BoardRowWrapper>
                                     {row.slice( 0 ).reverse().map( ( grd, y ) => {
                                         return (
-                                            <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={grd.ava} clickHandler={( event ) => { clickHandler( x, y ) }} />
+                                            <Grid x={7 - x} y={7 - y} image={imgDict[grd.type][grd.color]} ava={grd.ava} clickHandler={( event ) => { clickHandler( 7 - x, 7 - y ) }} />
                                         )
                                     } )}
                                 </BoardRowWrapper>
