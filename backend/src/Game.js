@@ -55,11 +55,10 @@ class Game {
     }
 
     static queen_preview( oriX, oriY, board ) {
-        let clr = board[oriX][oriY].color
         let avaList = Game.bishop_preview( oriX, oriY, board )
-        avaList.concat( Game.rook_preview( oriX, oriY, board ) )
+        avaList = avaList.concat( Game.rook_preview( oriX, oriY, board ) )
 
-        return
+        return avaList
     }
 
     static bishop_preview( oriX, oriY, board ) {
@@ -204,7 +203,60 @@ class Game {
     }
 
     static pawn_preview( oriX, oriY, board ) {
+        let clr = board[oriX][oriY].color
+        let avaList = []
 
+        // white 
+        if ( clr == 'b' ) {
+            if ( oriX == 7 ) {
+                return []
+            }
+            //forward 
+            let forward = 1
+            if ( oriX == 1 ) {
+                forward += 1
+            }
+            for ( let x = oriX + 1; x <= oriX + forward + 1; x++ ) {
+                if ( board[x][oriY].type != 'nothing' ) {
+                    break
+                }
+                avaList.push( [x, oriY] )
+            }
+
+            // eat 
+            if ( board[oriX + 1][oriY + 1].color == 'w' ) {
+                avaList.push( [oriX + 1, oriY + 1] )
+            }
+            if ( board[oriX + 1][oriY - 1] == 'w' ) {
+                avaList.push( [oriX + 1, oriY - 1] )
+            }
+        }
+
+        else if ( clr == 'w' ) {
+            if ( oriX == 0 ) {
+                return []
+            }
+            //forward 
+            let forward = 1
+            if ( oriX == 6 ) {
+                forward += 1
+            }
+            for ( let x = oriX - 1; x <= oriX - forward - 1; x-- ) {
+                if ( board[x][oriY].type != 'nothing' ) {
+                    break
+                }
+                avaList.push( [x, oriY] )
+            }
+
+            // eat 
+            if ( board[oriX - 1][oriY + 1].color == 'b' ) {
+                avaList.push( [oriX - 1, oriY + 1] )
+            }
+            if ( board[oriX - 1][oriY - 1] == 'b' ) {
+                avaList.push( [oriX - 1, oriY - 1] )
+            }
+        }
+        return avaList
     }
 
     static is_in_range( examPos ) {
@@ -290,6 +342,7 @@ class Game {
         for ( let i = 0; i < 19; i++ ) {
             process.stdout.write( '-' )
         }
+        process.stdout.write( '\n' )
     }
 
     move( from, to ) {
