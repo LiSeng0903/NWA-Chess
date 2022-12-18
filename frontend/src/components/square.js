@@ -8,7 +8,7 @@ import './square.css'
 //   );
 // }
 
-export default function Square( { rowIdx, colIdx, color } ) {
+export default function Square ( { rowIdx, colIdx, color } ) {
   const colorID = 'square.' + color.toString()
   const ID = rowIdx.toString() + colIdx.toString()
   return (
@@ -20,4 +20,5 @@ export default function Square( { rowIdx, colIdx, color } ) {
 
   )
 }
+
 

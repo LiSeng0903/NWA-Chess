@@ -9,7 +9,7 @@ function isEven( num ) {
 }
 
 const Board = () => {
-//   const [board, setBoard] = useState([]);
+  const [board, setBoard] = useState([]);
   useEffect( () => {
     // Calling the function
     // initialiseChessBoard()
@@ -22,13 +22,13 @@ const Board = () => {
   //     createBoard()
   //     setBoard(newBoard.squares)
   // }
-//   const color = []
-  const board = []
+  let color = []
+//   const board = []
 
   const createBoard = () => {
     // const board = []
     for ( let i = 0; i < 8; i++ ) {
-      const squareRows = []
+      let squareRows = []
       for ( let j = 0; j < 8; j++ ) {
         const squareShade = ( isEven( i ) && isEven( j ) ) || ( !isEven( i ) && !isEven( j ) ) ? "white" : "black"
         //   squareRows.push(<Square key={j} rowIdx={i} colIdx={j} color={squareShade} position={i} />);
@@ -36,11 +36,11 @@ const Board = () => {
       }
       //   console.log(squareRows)
       // board.push(<div className="board-row" key={i} style={{display: "flex"} }>{squareRows}</div>)
-      board.push( squareRows )
+      color.push( squareRows )
     }
-    // setBoard(color)
-    console.log( board )
-    console.log( board[0] )
+    setBoard(color)
+    // console.log( board )
+    // console.log( board[0] )
   }
 
 
@@ -50,6 +50,7 @@ const Board = () => {
         return (
           <div id={'row' + rowIdx} style={{ display: "flex" }}> {
             row.map( ( col, colIdx ) => {
+                console.log(board[colIdx][rowIdx])
               return(
               <Square
               rowIdx={rowIdx}
