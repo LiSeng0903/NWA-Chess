@@ -18,6 +18,6 @@ serverWS.on( "connection", ( ws ) => {
 } )
 
 const PORT = process.env.PORT || 4000
-server.listen( PORT, () => {
+server.listen( PORT,"10.131.101.32",  () => {
     console.log( `server is on ${PORT}` )
 } )
