@@ -23,6 +23,7 @@ const ResultTextWrapper = styled.div`
     text-decoration-line: overline underline;
     color: #550a0a;
     font-weight: bold;
+    border-radius: 20px;
 `
 
 const ResultModal = ( { win } ) => {
