@@ -1,6 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
 const clientWS = new WebSocket( 'ws://172.20.10.5:4000' )
+
+clientWS.onopen= () => {
+    sendData(["init"]);
+}
+
 const sendData = async ( data ) => {
     if(clientWS.readyState === 1){
         await clientWS.send( JSON.stringify( data ) )
@@ -64,7 +69,7 @@ const ChessProvider = ( props ) => {
     }
 
     useEffect( () => {
-        init()
+        // init()
         console.log( `My color is ${myColor == 'w' ? 'white' : 'black'}` )
     }, [] )
 
