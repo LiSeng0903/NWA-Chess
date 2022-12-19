@@ -9,7 +9,6 @@ const ResultModalWrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0.5;
-    border-radius: 20px;
 `
 
 const ResultTextWrapper = styled.div`
@@ -24,6 +23,7 @@ const ResultTextWrapper = styled.div`
     text-decoration-line: overline underline;
     color: #550a0a;
     font-weight: bold;
+    border-radius: 20px;
 `
 
 const ResultModal = ( { win } ) => {

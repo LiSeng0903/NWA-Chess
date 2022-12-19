@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 const GridWrapper = styled.div`
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
     background-color: ${( { x, y, ava, isFocus } ) => {
         if ( isFocus ) { return '#dab141' }
         else if ( ava ) {
