@@ -3,9 +3,10 @@ import styled from 'styled-components'
 const GridWrapper = styled.div`
     height: 100px;
     width: 100px;
-    background-color: ${( { x, y, ava } ) => {
-        if ( ava ) {
-            return ( ( x + y ) % 2 == 0 ? '#437b21' : '#ee1b1b' )
+    background-color: ${( { x, y, ava, isFocus } ) => {
+        if ( isFocus ) { return '#dab141' }
+        else if ( ava ) {
+            return ( ( x + y ) % 2 == 0 ? '#63b331' : '#dd1616' )
         }
         else {
             return ( ( x + y ) % 2 == 0 ? '#294b14' : '#8a0e0e' )
@@ -15,15 +16,20 @@ const GridWrapper = styled.div`
     display: flex;
     justify-content: center; 
     align-items: center;
+    ${( { isFocus } ) => {
+        if ( isFocus ) {
+            return 'box-shadow: inset 0px 0px 0px 5px #a08332;'
+        }
+    }}
 `
 
 const GridImgWrapper = styled.img`
     height: 70%;
 `
 
-const Grid = ( { x, y, image, ava, clickHandler } ) => {
+const Grid = ( { x, y, image, ava, isFocus, clickHandler } ) => {
     return (
-        <GridWrapper x={x} y={y} ava={ava} onClick={clickHandler} >
+        <GridWrapper x={x} y={y} ava={ava} isFocus={isFocus} onClick={clickHandler} >
             {image && <GridImgWrapper src={image} alt="no img" />}
         </GridWrapper >
     )

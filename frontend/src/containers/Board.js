@@ -82,10 +82,10 @@ const Board = () => {
         // move 
         else if ( board[x][y].ava == true ) {
             move( focusP, [x, y] )
+            setFocusP( [] )
         }
         // cancel preview
         else {
-            console.log( 'cancel preview' )
             setFocusP( [] )
             preview( [] )
         }
@@ -100,8 +100,9 @@ const Board = () => {
                         return (
                             <BoardRowWrapper>
                                 {row.map( ( grd, y ) => {
+                                    console.log( focusP )
                                     return (
-                                        <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={grd.ava} clickHandler={( event ) => { clickHandler( x, y ) }} />
+                                        <Grid x={x} y={y} image={imgDict[grd.type][grd.color]} ava={grd.ava} isFocus={( focusP[0] == x && focusP[1] == y )} clickHandler={( event ) => { clickHandler( x, y ) }} />
                                     )
                                 } )}
                             </BoardRowWrapper>
@@ -114,7 +115,7 @@ const Board = () => {
                                 <BoardRowWrapper>
                                     {row.slice( 0 ).reverse().map( ( grd, y ) => {
                                         return (
-                                            <Grid x={7 - x} y={7 - y} image={imgDict[grd.type][grd.color]} ava={grd.ava} clickHandler={( event ) => { clickHandler( 7 - x, 7 - y ) }} />
+                                            <Grid x={7 - x} y={7 - y} image={imgDict[grd.type][grd.color]} ava={grd.ava} isFocus={( focusP[0] == 7 - x && focusP[1] == 7 - y )} clickHandler={( event ) => { clickHandler( 7 - x, 7 - y ) }} />
                                         )
                                     } )}
                                 </BoardRowWrapper>
