@@ -18,6 +18,7 @@ export default {
             const [task, payload] = JSON.parse( data )
             switch ( task ) {
                 case "init": {
+                    console.log("player "+ws+" connected")
                     const newBoard = game.board
                     const turn = game.turn
                     let playerColor = ''

@@ -2,7 +2,9 @@ import { createContext, useContext, useEffect, useState } from "react"
 
 const clientWS = new WebSocket( 'ws://172.20.10.5:4000' )
 const sendData = async ( data ) => {
-    await clientWS.send( JSON.stringify( data ) )
+    if(clientWS.readyState === 1){
+        await clientWS.send( JSON.stringify( data ) )
+    }
 }
 
 const ChessContext = createContext(
