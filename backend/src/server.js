@@ -17,7 +17,7 @@ serverWS.on( "connection", ( ws ) => {
     ws.onmessage = wsConnect.do( ws, serverWS, game )
 } )
 
-const PORT = process.env.PORT || 4000
-server.listen( PORT,"172.20.10.5",  () => {
+const PORT = 4000
+server.listen( PORT, "172.20.10.3", () => {
     console.log( `server is on ${PORT}` )
 } )
