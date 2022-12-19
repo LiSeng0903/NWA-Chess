@@ -1,9 +1,9 @@
-import { useState } from "react"
 import styled from "styled-components"
 
 import { useChess } from "./hooks/useChess"
 import { Grid } from "../components/Grid"
 import { WaitModal } from "../components/WaitModal"
+import { ResultModal } from "../components/ResultModal"
 
 // import images 
 import blackBishopImg from '../imgs/blackBishop.png'
@@ -67,13 +67,12 @@ const BoardRowWrapper = styled.div`
 `
 
 const Board = () => {
-    const { board, focusP, setFocusP, preview, move, turn, myColor } = useChess()
+    const { board, focusP, setFocusP, preview, move, turn, myColor, winner } = useChess()
 
     const clickHandler = ( x, y ) => {
         // not your turn 
-        if ( turn != myColor ) {
-            return
-        }
+        if ( turn != myColor ) return
+        if ( winner != '' ) return
 
         // preview 
         if ( board[x][y].color == myColor ) {
@@ -124,7 +123,7 @@ const Board = () => {
                     )
 
             }
-            {myColor == turn ? <></> : <WaitModal />}
+            {winner ? <ResultModal win={myColor == winner} /> : ( myColor == turn ? <></> : <WaitModal /> )}
         </BoardWrapper>
     )
 }

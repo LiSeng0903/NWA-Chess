@@ -19,6 +19,9 @@ const ChessContext = createContext(
         focusP: [],
         setFocusP: () => {},
 
+        winner: '',
+        setWinner: () => {},
+
         name: "",
         setName: () => {},
 
@@ -33,6 +36,7 @@ const ChessProvider = ( props ) => {
     const [turn, setTurn] = useState( '' )
     const [myColor, setMyColor] = useState( '' )
     const [focusP, setFocusP] = useState( [] )
+    const [winner, setWinner] = useState( '' )
     const [name, setName] = useState( "" )
 
 
@@ -55,17 +59,50 @@ const ChessProvider = ( props ) => {
                 break
             }
         }
-
-        // setBoard( newBoard )
     }
 
     useEffect( () => {
         init()
+        console.log( `My color is ${myColor == 'w' ? 'white' : 'black'}` )
     }, [] )
 
     useEffect( () => {
-        console.log( `My color is ${myColor == 'w' ? 'white' : 'black'}` )
+        setWinner( checkWinner() )
     }, [board] )
+
+    const checkWinner = () => {
+        console.log( board )
+        if ( board.length == 0 ) {
+            return ''
+        }
+        let winner = ''
+        let whiteKing = false
+        let blackKing = false
+        for ( let x = 0; x < 8; x++ ) {
+            for ( let y = 0; y < 8; y++ ) {
+                if ( board[x][y].type == 'king' ) {
+                    if ( board[x][y].color == 'w' ) {
+                        whiteKing = true
+                    }
+                    else {
+                        blackKing = true
+                    }
+                }
+            }
+        }
+
+        if ( blackKing == false ) {
+            winner = 'w'
+        }
+        else if ( whiteKing == false ) {
+            winner = 'b'
+        }
+        else {
+            winner = ''
+        }
+
+        return winner
+    }
 
     const preview = ( previewPos ) => {
         // get preview board 
@@ -97,6 +134,9 @@ const ChessProvider = ( props ) => {
 
                     focusP,
                     setFocusP,
+
+                    winner,
+                    setWinner,
 
                     name,
                     setName,
