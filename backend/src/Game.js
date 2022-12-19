@@ -381,6 +381,8 @@ class Game {
         else {
             this.turn = 'w'
         }
+
+        this.check_pawn_transform()
         return this.board
     }
 
@@ -405,6 +407,17 @@ class Game {
         for ( let x = 0; x < 8; x++ ) {
             for ( let y = 0; y < 8; y++ ) {
                 this.board[x][y].ava = false
+            }
+        }
+    }
+
+    check_pawn_transform() {
+        for ( let y = 0; y < 8; y++ ) {
+            if ( this.board[0][y].type == 'pawn' ) {
+                this.board[0][y].type = 'queen'
+            }
+            if ( this.board[7][y].type == 'pawn' ) {
+                this.board[7][y].type = 'queen'
             }
         }
     }
