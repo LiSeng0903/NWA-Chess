@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
-const clientWS = new WebSocket( 'ws://10.131.101.32:4000' )
+const clientWS = new WebSocket( 'ws://172.20.10.5:4000' )
 const sendData = async ( data ) => {
     await clientWS.send( JSON.stringify( data ) )
 }
