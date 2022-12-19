@@ -22,7 +22,7 @@ export default {
                     const newBoard = game.board
                     const turn = game.turn
                     let playerColor = ''
-                    if ( game.playerCnt === 2 ) {
+                    if ( game.playerCnt === 1 ) {
                         playerColor = 'b'
                     } else {
                         playerColor = 'w'
