@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import { useChess } from "./hooks/useChess"
 import { Grid } from "../components/Grid"
+import { WaitModal } from "../components/WaitModal"
 
 // import images 
 import blackBishopImg from '../imgs/blackBishop.png'
@@ -89,7 +90,6 @@ const Board = () => {
             setFocusP( [] )
             preview( [] )
         }
-
     }
 
     return (
@@ -124,6 +124,7 @@ const Board = () => {
                     )
 
             }
+            {myColor == turn ? <></> : <WaitModal />}
         </BoardWrapper>
     )
 }
