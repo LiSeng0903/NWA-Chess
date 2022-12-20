@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
+const SERVER_IP = '192.168.1.148'
 const clientWS = new WebSocket( 'ws://' + SERVER_IP + ':4000' )
 
 clientWS.onopen = () => {
@@ -76,7 +77,6 @@ const ChessProvider = ( props ) => {
     }, [board] )
 
     const checkWinner = () => {
-        console.log( board )
         if ( board.length == 0 ) {
             return ''
         }

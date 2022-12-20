@@ -11,5 +11,6 @@
   "main": "index.js",
   "repository": "https://github.com/LiSeng0903/NWA-Chess.git",
   "author": "PuSung <sam90.hsu@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
