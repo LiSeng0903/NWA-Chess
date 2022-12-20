@@ -3,8 +3,8 @@ import http from 'http'
 import WebSocket from 'ws'
 import wsConnect from "./wsConnect.js"
 import { Game } from './Game.js'
-import { SERVER_IP } from "../../SERVER_IP.js"
 
+const SERVER_IP = '192.168.1.148'
 const app = express()
 const server = http.createServer( app )
 const serverWS = new WebSocket.Server( { server } )
