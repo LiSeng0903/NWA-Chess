@@ -5,6 +5,7 @@ import wsConnect from "./wsConnect.js"
 import { Game } from './Game.js'
 
 const SERVER_IP = '192.168.1.148'
+
 const app = express()
 const server = http.createServer( app )
 const serverWS = new WebSocket.Server( { server } )
