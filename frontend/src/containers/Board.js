@@ -50,8 +50,8 @@ const imgDict = {
 }
 
 const BoardWrapper = styled.div`
-    height: 800px;
-    width: 800px;
+    height: 100vh;
+    width: 100vh;
     background-color: #c4afac;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@ const BoardWrapper = styled.div`
 `
 
 const BoardRowWrapper = styled.div`
-    height: 16%;
+    height: 12.5%;
     width: 100%;
     background-color: #dfc8c5;
     display: flex;
