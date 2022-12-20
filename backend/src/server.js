@@ -1,10 +1,9 @@
 import express from 'express'
 import http from 'http'
-import dotenv from "dotenv-defaults"
-import mongoose from "mongoose"
 import WebSocket from 'ws'
 import wsConnect from "./wsConnect.js"
 import { Game } from './Game.js'
+import { SERVER_IP } from "../../SERVER_IP.js"
 
 const app = express()
 const server = http.createServer( app )
@@ -18,6 +17,6 @@ serverWS.on( "connection", ( ws ) => {
 } )
 
 const PORT = 4000
-server.listen( PORT, "172.20.10.5", () => {
+server.listen( PORT, SERVER_IP, () => {
     console.log( `server is on ${PORT}` )
 } )

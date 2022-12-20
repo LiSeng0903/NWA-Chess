@@ -1,35 +1,11 @@
-# CLient-Server CP
+# 執行方式
+前端以 React 實作；後端則是 JavaScript 在 node.js 中執行，要先確定電腦有可以的環境。
 
-回傳資料：8*8 的陣列，每一格是一個 object
+另外後端使用的 port 為 4000；前端使用的 port 為 3000，請確保這些 port 上沒有程式運行。
 
-| attribute | meaning       | data type |
-| --------- | ------------- | --------- |
-| type      | 棋子的種類    | str       |
-| color     | 棋子的顏色    | str       |
-| ava       | 可以 / 不行走 | bool      |
+## Server 程式
+在 `NWA-CHESS` 目錄下執行 `yarn backend`，待跑出 `port on 4000` 即可
 
-## type
-
-| str     | 棋子     |
-| ------- | -------- |
-| nothing | 沒有棋子 |
-| pawn    | 小兵     |
-| bishop  | 主教     |
-| rook    | 城堡     |
-| knight  | 馬頭     |
-| king    | 王       |
-| queen   | 后       |
-
-## color
-
-| str | 顏色 |
-| --- | ---- |
-| b   | 黑色 |
-| w   | 白色 |
-
-## ava
-
-| bool  | 意義   |
-| ----- | ------ |
-| true  | 可走   |
-| false | 不可走 |
+## Client 程式
+需在
+在 `NWA-CHESS` 目錄下執行 `yarn frontend`，出現網頁畫面（網址是 http://localhost:3000）即可，連上線時後端也會印出 `player connected`的訊息。

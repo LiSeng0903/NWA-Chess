@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
-const clientWS = new WebSocket( 'ws://172.20.10.5:4000' )
+const clientWS = new WebSocket( 'ws://' + SERVER_IP + ':4000' )
 
-clientWS.onopen= () => {
-    sendData(["init"]);
+clientWS.onopen = () => {
+    sendData( ["init"] )
 }
 
 const sendData = async ( data ) => {
